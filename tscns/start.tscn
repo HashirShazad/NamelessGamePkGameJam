@@ -1,0 +1,136 @@
+[gd_scene load_steps=3 format=3 uid="uid://e38jl67l85lq"]
+
+[ext_resource type="Script" path="res://Windows/ErrorWindow.gd" id="1_nkmwr"]
+[ext_resource type="Script" path="res://Windows/WhyWindow.gd" id="2_d1eqn"]
+
+[node name="Node" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="ErrorWindow" type="Window" parent="."]
+title = "Error"
+initial_position = 1
+size = Vector2i(300, 100)
+unresizable = true
+always_on_top = true
+script = ExtResource("1_nkmwr")
+
+[node name="Control" type="Control" parent="ErrorWindow"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="ErrorWindow/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -73.0
+offset_right = 73.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "The Game Crashed
+"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ErrorWindow/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="OK" type="Button" parent="ErrorWindow/Control/HBoxContainer"]
+custom_minimum_size = Vector2(60, 20)
+layout_mode = 2
+size_flags_vertical = 3
+text = "Ok"
+
+[node name="VSeparator" type="VSeparator" parent="ErrorWindow/Control/HBoxContainer"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+
+[node name="I dont care" type="Button" parent="ErrorWindow/Control/HBoxContainer"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+size_flags_vertical = 3
+text = "I dont care
+"
+
+[node name="Why" type="Window" parent="."]
+title = "Error"
+initial_position = 1
+size = Vector2i(300, 100)
+visible = false
+unresizable = true
+always_on_top = true
+script = ExtResource("2_d1eqn")
+
+[node name="Control" type="Control" parent="Why"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Why/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -73.0
+offset_right = 73.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Why dont u care
+"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Why/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="who" type="Button" parent="Why/Control/HBoxContainer"]
+custom_minimum_size = Vector2(60, 20)
+layout_mode = 2
+size_flags_vertical = 3
+text = "Who Are You"
+
+[node name="VSeparator" type="VSeparator" parent="Why/Control/HBoxContainer"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+
+[node name="shutup" type="Button" parent="Why/Control/HBoxContainer"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+size_flags_vertical = 3
+text = "Shut Up
+"
+
+[connection signal="pressed" from="ErrorWindow/Control/HBoxContainer/OK" to="ErrorWindow" method="_on_ok_pressed"]
+[connection signal="pressed" from="ErrorWindow/Control/HBoxContainer/I dont care" to="ErrorWindow" method="_on_i_dont_care_pressed"]
+[connection signal="pressed" from="Why/Control/HBoxContainer/who" to="Why" method="_on_who_pressed"]
+[connection signal="pressed" from="Why/Control/HBoxContainer/shutup" to="Why" method="_on_shutup_pressed"]
